@@ -6,6 +6,7 @@
 	<ManifestVersion>1.2</ManifestVersion>
 	<Privileges>
 		<Privilege><Name>LOCATION_SERVICE</Name></Privilege>
+	    <Privilege><Name>IMAGE</Name><GroupId>devicegr48</GroupId></Privilege>
 	</Privileges>
 	<DeviceProfile>
 		<APIVersion>2.0</APIVersion>
