@@ -24,23 +24,18 @@
         <layout height="37" mode="Landscape" width="303" x="496" y="131"/>
     </Label>
     <Button id="IDC_BUTTONATTR" parent="IDF_BASEMAIN">
-        <property disableTextColor="" disabledBitmapPath="" disabledColor="" disabledColorOpacity="100" hAlign="ALIGN_CENTER" highlightedBGBitmapPath="" highlightedColor="" highlightedColorOpacity="100" highlightedTextColor="" normalBGBitmapPath="" normalBitmapPath="" normalColor="#FFFFFF" normalColorOpacity="20" normalTextColor="#000000" pressedBGBitmapPath="" pressedBitmapPath="" pressedColor="#FFFFFF" pressedColorOpacity="100" pressedTextColor="" text="Attractions" textSize="35" vAlign="ALIGN_MIDDLE"/>
-        <layout height="100" mode="Portrait" width="270" x="104" y="262"/>
+        <property disableTextColor="" disabledBitmapPath="" disabledColor="" disabledColorOpacity="100" hAlign="ALIGN_CENTER" highlightedBGBitmapPath="" highlightedColor="" highlightedColorOpacity="100" highlightedTextColor="" normalBGBitmapPath="" normalBitmapPath="" normalColor="#FFFFFF" normalColorOpacity="50" normalTextColor="#000000" pressedBGBitmapPath="" pressedBitmapPath="" pressedColor="#FFFFFF" pressedColorOpacity="100" pressedTextColor="" text="Journey Planner" textSize="35" vAlign="ALIGN_MIDDLE"/>
+        <layout height="100" mode="Portrait" width="270" x="105" y="262"/>
         <layout height="48" mode="Landscape" width="333" x="275" y="279"/>
     </Button>
-    <Button id="IDC_BUTTONPLANNER" parent="IDF_BASEMAIN">
-        <property disableTextColor="" disabledBitmapPath="" disabledColor="" disabledColorOpacity="100" hAlign="ALIGN_CENTER" highlightedBGBitmapPath="" highlightedColor="" highlightedColorOpacity="100" highlightedTextColor="" normalBGBitmapPath="" normalBitmapPath="" normalColor="#FFFFFF" normalColorOpacity="20" normalTextColor="#000000" pressedBGBitmapPath="" pressedBitmapPath="" pressedColor="#FFFFFF" pressedColorOpacity="100" pressedTextColor="" text="Journey Planner" textSize="35" vAlign="ALIGN_MIDDLE"/>
-        <layout height="100" mode="Portrait" width="270" x="104" y="392"/>
-        <layout height="48" mode="Landscape" width="333" x="183" y="220"/>
-    </Button>
     <Button id="IDC_BUTTONABOUT" parent="IDF_BASEMAIN">
-        <property disableTextColor="" disabledBitmapPath="" disabledColor="" disabledColorOpacity="100" hAlign="ALIGN_CENTER" highlightedBGBitmapPath="" highlightedColor="" highlightedColorOpacity="100" highlightedTextColor="" normalBGBitmapPath="" normalBitmapPath="" normalColor="#FFFFFF" normalColorOpacity="10" normalTextColor="" pressedBGBitmapPath="" pressedBitmapPath="" pressedColor="" pressedColorOpacity="100" pressedTextColor="" text="About" textSize="32" vAlign="ALIGN_MIDDLE"/>
-        <layout height="50" mode="Portrait" width="170" x="310" y="712"/>
+        <property disableTextColor="" disabledBitmapPath="" disabledColor="" disabledColorOpacity="100" hAlign="ALIGN_CENTER" highlightedBGBitmapPath="" highlightedColor="" highlightedColorOpacity="100" highlightedTextColor="" normalBGBitmapPath="" normalBitmapPath="" normalColor="#FFFFFF" normalColorOpacity="50" normalTextColor="" pressedBGBitmapPath="" pressedBitmapPath="" pressedColor="" pressedColorOpacity="100" pressedTextColor="" text="About" textSize="32" vAlign="ALIGN_MIDDLE"/>
+        <layout height="50" mode="Portrait" width="170" x="155" y="642"/>
         <layout height="48" mode="Landscape" width="333" x="196" y="324"/>
     </Button>
     <Button id="IDC_BUTTONMAP" parent="IDF_BASEMAIN">
-        <property disableTextColor="" disabledBitmapPath="" disabledColor="" disabledColorOpacity="100" hAlign="ALIGN_CENTER" highlightedBGBitmapPath="" highlightedColor="" highlightedColorOpacity="100" highlightedTextColor="" normalBGBitmapPath="" normalBitmapPath="" normalColor="#FFFFFF" normalColorOpacity="20" normalTextColor="" pressedBGBitmapPath="" pressedBitmapPath="" pressedColor="" pressedColorOpacity="100" pressedTextColor="" text="Map Search" textSize="32" vAlign="ALIGN_MIDDLE"/>
-        <layout height="100" mode="Portrait" width="270" x="104" y="522"/>
+        <property disableTextColor="" disabledBitmapPath="" disabledColor="" disabledColorOpacity="100" hAlign="ALIGN_CENTER" highlightedBGBitmapPath="" highlightedColor="" highlightedColorOpacity="100" highlightedTextColor="" normalBGBitmapPath="" normalBitmapPath="" normalColor="#FFFFFF" normalColorOpacity="50" normalTextColor="" pressedBGBitmapPath="" pressedBitmapPath="" pressedColor="" pressedColorOpacity="100" pressedTextColor="" text="Map" textSize="32" vAlign="ALIGN_MIDDLE"/>
+        <layout height="100" mode="Portrait" width="270" x="105" y="462"/>
         <layout height="48" mode="Landscape" width="333" x="183" y="299"/>
     </Button>
 </Scene>
