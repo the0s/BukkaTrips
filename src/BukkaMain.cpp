@@ -93,8 +93,9 @@ BukkaMain::OnActionPerformed(const Osp::Ui::Control& source, int actionId)
 	}
 	case ID_SOFTKEY_MAP:{
 		MapForm *pMap = new MapForm();
-		pMap->Initialize();
+		//pMap->Initialize();
 		Frame *pFrame = Application::GetInstance()->GetAppFrame()->GetFrame();
+		pMap->CreateForm(pFrame);
 		pFrame->AddControl(*pMap);
 		pFrame->SetCurrentForm(*pMap);
 		pMap->Draw();
