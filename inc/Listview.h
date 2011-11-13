@@ -29,6 +29,7 @@ protected:
  	Osp::Ui::Controls::OptionMenu *menu_;
 	Osp::Base::Collection::ArrayListT<Osp::Base::String*> __name;
 	Osp::Base::Collection::ArrayListT<Osp::Base::String*> __bitmapPath;
+	Osp::Base::Collection::ArrayListT<Osp::Base::String*> __SelectedAttrations;
 	Osp::Ui::Controls::Label* __pLabelLog;
 
 
