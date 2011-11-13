@@ -261,7 +261,6 @@ Overlay::MakeMarker()
 		pMarker->SetId(GetOverlayId());
 		pMarker->SetPriority(1);
 		pMarker->SetDragDropEnabled(true);
-	
 		return pMarker;
 	}
 	else

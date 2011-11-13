@@ -1,4 +1,5 @@
 #include "MapForm.h"
+
 #include <FMedia.h>
 
 using namespace Osp::Base;
@@ -146,7 +147,6 @@ MapForm::CreateForm(Frame* pFrame)
 		pHeader->SetStyle(HEADER_STYLE_TITLE);
 		pHeader->SetName(L"Map Control");
 		pHeader->SetTitleText(L"Map Control");
-
 	}
 
 	Footer* pFooter = GetFooter();
@@ -173,6 +173,11 @@ MapForm::CreateForm(Frame* pFrame)
 		footerItem4.Construct(ACTION_ID_ROTATE_BUTTON);
 		footerItem4.SetText("Rotate\nMap");
 		pFooter->AddItem(footerItem4);
+
+		FooterItem footerItem5;
+		footerItem5.Construct(ACTION_ID_BACK);
+		footerItem5.SetText("Back");
+		pFooter->AddItem(footerItem5);
 
 		pFooter->AddActionEventListener(*this);
 	}
@@ -318,24 +323,56 @@ MapForm::OnActionPerformed(const Osp::Ui::Control &source, int actionId)
 		}
 		break;
 	case ACTION_ID_INFOWINDOW2: {
-		if (_showAll) {
-				ShowAll(false);
-				ShowInfoWindowWithImage(true);
-		} else {
-				MoveMarker(false);
-				ShowOverlays(false);
-				ShowInfoWindow(false);
-				ShowMyLocation(false);
+//		if (_showAll) {
+//				ShowAll(false);
+//				ShowInfoWindowWithImage(true);
+//		} else {
+//				MoveMarker(false);
+//				ShowOverlays(false);
+//				ShowInfoWindow(false);
+//				ShowMyLocation(false);
+//
+//			if (_showInfoWithImage == false) {
+//					ShowInfoWindowWithImage(true);
+//			} else {
+//					ShowInfoWindowWithImage(false);
+//				}
+//			}
+//
+//			Redraw();
+//		}
+//		break;		if(__newStartingPoint.IsEmpty() || __newDestinationPoint.IsEmpty()) break;
 
-			if (_showInfoWithImage == false) {
-					ShowInfoWindowWithImage(true);
-			} else {
-					ShowInfoWindowWithImage(false);
-				}
-			}
-
-			Redraw();
+		ArrayList waypoints;
+		String value(L"");
+		Osp::Base::String __newStartingPoint =	(L"51.5033, -0.1197");
+		Osp::Base::String __newDestinationPoint	= (L"51.500721983903,-0.124197006225586");
+		Coordinates* pStartCoord = NavigatorUtil::StringToCoordinatesN(__newStartingPoint);
+		Coordinates* pDestCoord  = NavigatorUtil::StringToCoordinatesN(__newDestinationPoint);
+		NavigatorRouteServices* __pRouteSvc = new NavigatorRouteServices();
+		if(pStartCoord != null)
+			waypoints.Add(*pStartCoord);
+		else
+		{
+			waypoints.Add(*new String(__newStartingPoint));
+			value += L"0";
+			value += Locale::CountryCodeToString(COUNTRY_US);
+			value += L";";
 		}
+
+		if(pDestCoord != null)
+			waypoints.Add(*pDestCoord);
+		else
+		{
+			waypoints.Add(*new String(__newDestinationPoint));
+			value += L"1";
+			value += Locale::CountryCodeToString(COUNTRY_US);
+			value += L";";
+		}
+
+		__pRouteSvc->GetRoute(waypoints, value);
+		waypoints.RemoveAll(true);
+	}
 		break;
 	case ACTION_ID_MY_LOCATION: {
 		ShowAll(false);
@@ -392,6 +429,17 @@ MapForm::OnActionPerformed(const Osp::Ui::Control &source, int actionId)
 	case ACTION_ID_GET_ADDRESS:
 		RequestReverseGeocode(_positionOfContextMenu);
 		break;
+
+	case ACTION_ID_BACK: {
+		BukkaMain *pMain = new BukkaMain();
+		pMain->Initialize();
+		Frame *pFrame = Application::GetInstance()->GetAppFrame()->GetFrame();
+		pFrame->AddControl(*pMain);
+		pFrame->SetCurrentForm(*pMain);
+		pMain->Draw();
+		pMain->Show();
+	}
+		break;
 	}
 }
 
@@ -403,7 +451,7 @@ MapForm::InitializeMapService(void)
 	// If you want to develop your own application with the location services.
 	// Some service providers may need license key for displaying a map. refer to the developer guide for details.
 	// Client name "guest" is invalid license.
-	const String extraInfo =  L"ClientName=guest;ClientPassword=1234;HostUrl=http://mapdev.ospserver.net/openls/openls";
+	const String extraInfo =  L"ClientName=samsung-jc;ClientPassword=4xndosys;HostUrl=http://ws.decarta.com/openls/openls";
 
 	Coordinates center;
 	Rectangle clientRect = GetClientAreaBounds();
@@ -740,6 +788,7 @@ MapForm::MoveMarker(bool bMoved)
 				Coordinates coord;
 				coord.Set(51.501, -0.142 ,0); //backi
 				_pMovedMarker1->SetCoordinates(coord);
+
 				_pMap->AddMapOverlay(*_pMovedMarker1);
 			}
 		}

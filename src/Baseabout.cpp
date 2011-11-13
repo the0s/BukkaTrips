@@ -31,8 +31,8 @@ Baseabout::OnInitializing(void)
 {
 	result r = E_SUCCESS;
 
-	SetSoftkeyActionId(SOFTKEY_1, ID_RIGHT_SOFTKEY);
-	AddSoftkeyActionListener(SOFTKEY_1,*this);
+		SetSoftkeyActionId(SOFTKEY_1, ID_RIGHT_SOFTKEY);
+		AddSoftkeyActionListener(SOFTKEY_1,*this);
 	// TODO: Add your initialization code here
 
 	return r;

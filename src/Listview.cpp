@@ -45,7 +45,7 @@ result Listview::OnInitializing(void) {
 
 	menu_ = new OptionMenu();
 	 menu_->Construct();
-	 menu_->SetShowState(true);
+	 menu_->SetShowState(false);
 	 menu_->AddItem(String("GO!"), ON_MENU_CALCULATE);
 	 menu_->AddActionEventListener(*this);
 	 this->AddControl(*menu_);

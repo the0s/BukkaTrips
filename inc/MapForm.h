@@ -8,6 +8,9 @@
 #include <FApp.h>
 #include <FLocations.h>
 #include "Overlay.h"
+#include "BukkaMain.h"
+#include "NavigatorUtil.h"
+#include "NavigatorRouteServices.h"
 
 class MapForm :
 	public Osp::Ui::Controls::Form,
@@ -38,6 +41,7 @@ private:
 		ACTION_ID_INFOWINDOW_BUTTON = 1,
 		ACTION_ID_OVERLAY_BUTTON,
 		ACTION_ID_ROTATE_BUTTON,
+		ACTION_ID_BACK,
 		ACTION_ID_BUTTON_MAX
 	};
 
