@@ -46,7 +46,7 @@ all: BukkaTrips.exe
 BukkaTrips.exe: $(OBJS) $(USER_OBJS)
 	@echo 'Building target: $@'
 	@echo 'Invoking: bada C++ Linker'
-	@echo 'ldflags: -L"C:/bada/2.0.2/Model/WaveWVGA/Target" -L"C:/Users/The0s/Desktop/Imperial/4th year/Bada/BukkaTrips/lib" -shared -march=armv7-a -mthumb -mthumb-interwork -mfpu=vfpv3 -mfloat-abi=hard -o"BukkaTrips.exe" ./src/BaseForm.o ./src/Baseabout.o ./src/BukkaMain.o ./src/BukkaTrips.o ./src/BukkaTripsEntry.o ./src/MapForm.o '
+	@echo 'ldflags: -L"C:/bada/2.0.2/Model/WaveWVGA/Target" -L"C:/Users/The0s/Desktop/Imperial/4th year/Bada/BukkaTrips/lib" -shared -march=armv7-a -mthumb -mthumb-interwork -mfpu=vfpv3 -mfloat-abi=hard -o"BukkaTrips.exe" ./src/BaseForm.o ./src/Baseabout.o ./src/BukkaMain.o ./src/BukkaTrips.o ./src/BukkaTripsEntry.o ./src/Listview.o ./src/MapForm.o ./src/MapForm2.o ./src/Overlay.o '
 	arm-samsung-nucleuseabi-g++ @ldflags @ldobjs  $(USER_OBJS) $(LIBS)
 	@echo 'Finished building target: $@'
 	@echo ' '
