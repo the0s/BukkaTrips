@@ -60,6 +60,8 @@ result Listview::OnInitializing(void) {
 	__bitmapPath.Add(new String("/Res/Icons/Splash_type3.png"));
 	__bitmapPath.Add(new String(L"/Res/Icons/Splash_type4.png"));
 
+	__SelectedAttrations.Construct();
+
 	__pLabelLog = static_cast<Label *> (GetControl("IDC_LABEL1"));
 	__pLabelLog->SetText(L"Log");
 	__pLabelLog->SetTextHorizontalAlignment(ALIGNMENT_LEFT);
@@ -95,6 +97,8 @@ void Listview::OnActionPerformed(const Osp::Ui::Control& source, int actionId) {
 	switch (actionId) {
 	case GO:
 		AppLog("GO!");
+		AppLog("%d",__SelectedAttrations.GetCount());
+
 		break;
 
 	case BACK:
@@ -136,6 +140,7 @@ Osp::Ui::Controls::ListItemBase* Listview::CreateItem(int index, int itemWidth) 
 			null, null);
 	item->AddElement(Rectangle(80, 25, 400, 50), ID_FORMAT_STRING, *name, true);
 	item->SetElementSelectionEnabled(ID_FORMAT_BITMAP, true);
+	item->SetElementSelectionEnabled(ID_FORMAT_STRING, true);
 	return item;
 }
 
@@ -164,6 +169,9 @@ void Listview::OnListViewItemLongPressed(Osp::Ui::Controls::ListView &listView,
 		break;
 	case ID_FORMAT_NULL:
 		itemText.Format(40, L"Item %d: Selected", index + 1);
+
+
+
 		break;
 	}
 
@@ -196,7 +204,16 @@ void Listview::OnListViewItemStateChanged(
 		msgbox.ShowAndWait(modalResult);
 		break;
 	case ID_FORMAT_NULL:
-		itemText.Format(40, L"Ite %d: Selected", index + 1);
+		itemText.Format(40, L"Item %d: Selected", index + 1);
+		String *itemname;
+		__name.GetAt(index , itemname);
+		if (__SelectedAttrations.Contains(itemname)){
+			__SelectedAttrations.Remove(itemname);
+		}
+		else{
+			__SelectedAttrations.Add(itemname);
+		}
+
 		break;
 	}
 	__pLabelLog->SetText(itemText);
