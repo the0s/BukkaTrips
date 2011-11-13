@@ -108,7 +108,7 @@ MapForm::CreateAndShowContextMenu(int menuItem,Osp::Graphics::Point position){
 		}
 			break;
 		case ACTION_ID_OVERLAY_BUTTON: {
-			_pContextMenu->AddItem("Markers", ACTION_ID_MARKERMOVE);
+			_pContextMenu->AddItem("Attractions", ACTION_ID_MARKERMOVE);
 			_pContextMenu->AddItem("Overlays", ACTION_ID_OVERLAY);
 			_pContextMenu->AddItem("All", ACTION_ID_ALL);
 		}break;
@@ -738,7 +738,7 @@ MapForm::MoveMarker(bool bMoved)
 			else
 			{
 				Coordinates coord;
-				coord.Set(51.500595,-0.129197 ,0);
+				coord.Set(51.501, -0.142 ,0); //backi
 				_pMovedMarker1->SetCoordinates(coord);
 				_pMap->AddMapOverlay(*_pMovedMarker1);
 			}
@@ -754,7 +754,7 @@ MapForm::MoveMarker(bool bMoved)
 			else
 			{
 				Coordinates coord;
-				coord.Set(51.500942,-0.125442,0);
+				coord.Set(51.5033, -0.1197,0); //eye
 				
 				_pMovedMarker2->SetCoordinates(coord);
 				_pMap->AddMapOverlay(*_pMovedMarker2);
@@ -771,7 +771,7 @@ MapForm::MoveMarker(bool bMoved)
 			else
 			{
 				Coordinates coord;
-				coord.Set(51.500595,-0.126858,0);
+				coord.Set(51.500721983903,-0.124197006225586,0); //bigben
 				
 				_pMovedMarker3->SetCoordinates(coord);
 				_pMap->AddMapOverlay(*_pMovedMarker3);

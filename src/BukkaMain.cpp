@@ -10,7 +10,7 @@
 #include "MapForm.h"
 #include "Baseabout.h"
 #include "BukkaTrips.h"
-
+#include "Listview.h"
 
 
 using namespace Osp::Base;
@@ -84,7 +84,14 @@ BukkaMain::OnActionPerformed(const Osp::Ui::Control& source, int actionId)
 	{
 	case ID_SOFTKEY_ATTRACTIONS:{
 		AppLog("Attration Button is clicked! \n");
-
+		Listview *pListView = new Listview();
+		pListView->Initialize();
+		Frame *pFrame = Application::GetInstance()->GetAppFrame()->GetFrame();
+		pFrame->AddControl(*pListView);
+		pFrame->SetCurrentForm(*pListView);
+		pListView->Draw();
+		pListView->Show();
+		break;
 		break;
 	}
 	case ID_SOFTKEY_PLANNER:{
@@ -110,7 +117,6 @@ BukkaMain::OnActionPerformed(const Osp::Ui::Control& source, int actionId)
 		pFrame->SetCurrentForm(*pAbout);
 		pAbout->Draw();
 		pAbout->Show();
-
 		break;
 	}
 	break;
