@@ -26,11 +26,10 @@
     <TabBar id="IDC_TABBAR1" parent="IDF_MAPFORM">
         <property BGColor="#8000FF" BGColorOpacity="100" normalItemTextColor="" selectedItemColor="#FF8000" selectedItemTextColor=""/>
         <itemSet>
-            <item actionId="200" text="My Location"/>
+            <item actionId="0" text="My Location"/>
             <item actionId="1" text="Journey"/>
             <item actionId="3" text="Update"/>
             <item actionId="4" text="New"/>
-            <item actionId="0" text=""/>
         </itemSet>
         <layout height="60" mode="Portrait" width="350" x="0" y="702"/>
         <layout height="60" mode="Landscape" width="800" x="50" y="382"/>
