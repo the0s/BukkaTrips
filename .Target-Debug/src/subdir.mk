@@ -9,10 +9,7 @@ CPP_SRCS += \
 ../src/BukkaMain.cpp \
 ../src/BukkaTrips.cpp \
 ../src/BukkaTripsEntry.cpp \
-../src/Listview.cpp \
-../src/MapForm.cpp \
-../src/MapForm2.cpp \
-../src/Overlay.cpp 
+../src/MapForm.cpp 
 
 OBJS += \
 ./src/BaseForm.o \
@@ -20,10 +17,7 @@ OBJS += \
 ./src/BukkaMain.o \
 ./src/BukkaTrips.o \
 ./src/BukkaTripsEntry.o \
-./src/Listview.o \
-./src/MapForm.o \
-./src/MapForm2.o \
-./src/Overlay.o 
+./src/MapForm.o 
 
 CPP_DEPS += \
 ./src/BaseForm.d \
@@ -31,10 +25,7 @@ CPP_DEPS += \
 ./src/BukkaMain.d \
 ./src/BukkaTrips.d \
 ./src/BukkaTripsEntry.d \
-./src/Listview.d \
-./src/MapForm.d \
-./src/MapForm2.d \
-./src/Overlay.d 
+./src/MapForm.d 
 
 
 # Each subdirectory must supply rules for building sources it contributes
