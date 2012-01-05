@@ -7,7 +7,8 @@
 class Listview: public Osp::Ui::Controls::Form,
 		public Osp::Ui::IActionEventListener,
 		public Osp::Ui::Controls::IListViewItemEventListener,
-		public Osp::Ui::Controls::IListViewItemProvider {
+		public Osp::Ui::Controls::IListViewItemProvider,
+ 	public Osp::Ui::ITouchEventListener {
 
 	// Construction
 public:
@@ -21,16 +22,14 @@ protected:
 	static const int ID_FORMAT_STRING = 500;
 	static const int ID_FORMAT_BITMAP = 501;
  	static const int ID_FORMAT_CUSTOM = 503;
- 	static const int ID_CONTEXT_ITEM_1 = 504;
- 	static const int ID_CONTEXT_ITEM_2 = 505;
- 	static const int ON_MENU_CALCULATE = 506;
- 	static const int ON_MENU = 507;
-
+ 	static const int GO = 506;
+ 	static const int BACK = 507;
 
 
  	Osp::Ui::Controls::OptionMenu *menu_;
 	Osp::Base::Collection::ArrayListT<Osp::Base::String*> __name;
 	Osp::Base::Collection::ArrayListT<Osp::Base::String*> __bitmapPath;
+	Osp::Base::Collection::ArrayListT<Osp::Base::String*> __SelectedAttrations;
 	Osp::Ui::Controls::Label* __pLabelLog;
 
 
@@ -52,6 +51,14 @@ public:
 
 
 
+
+	virtual void OnTouchDoublePressed(const Osp::Ui::Control &source, const Osp::Graphics::Point &currentPosition, const Osp::Ui::TouchEventInfo &touchInfo);
+	virtual void OnTouchFocusIn(const Osp::Ui::Control &source, const Osp::Graphics::Point &currentPosition, const Osp::Ui::TouchEventInfo &touchInfo);
+	virtual void OnTouchFocusOut(const Osp::Ui::Control &source, const Osp::Graphics::Point &currentPosition, const Osp::Ui::TouchEventInfo &touchInfo);
+	virtual void OnTouchLongPressed(const Osp::Ui::Control &source, const Osp::Graphics::Point &currentPosition, const Osp::Ui::TouchEventInfo &touchInfo);
+	virtual void OnTouchMoved(const Osp::Ui::Control &source, const Osp::Graphics::Point &currentPosition, const Osp::Ui::TouchEventInfo &touchInfo);
+	virtual void OnTouchPressed(const Osp::Ui::Control &source, const Osp::Graphics::Point &currentPosition, const Osp::Ui::TouchEventInfo &touchInfo);
+	virtual void OnTouchReleased(const Osp::Ui::Control &source, const Osp::Graphics::Point &currentPosition, const Osp::Ui::TouchEventInfo &touchInfo);
 };
 
 #endif	//_FORM1_H_

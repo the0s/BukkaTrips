@@ -1,12 +1,14 @@
 #include "Listview.h"
 #include <FGraphics.h>
 #include <FMedia.h>
+#include "BukkaMain.h"
 
 using namespace Osp::Base;
 using namespace Osp::Ui;
 using namespace Osp::Ui::Controls;
 using namespace Osp::Media;
 using namespace Osp::Graphics;
+using namespace Osp::App;
 
 Listview::Listview(void) {
 }
@@ -17,6 +19,22 @@ Listview::~Listview(void) {
 bool Listview::Initialize() {
 	// Construct an XML form
 	Construct(L"IDF_LISTVIEW");
+	Footer* pFooter = GetFooter();
+	if (pFooter) {
+		pFooter->SetStyle(FOOTER_STYLE_BUTTON_TEXT);
+
+		FooterItem footerItem1;
+		footerItem1.Construct(GO);
+		footerItem1.SetText("GO!");
+		pFooter->AddItem(footerItem1);
+
+		FooterItem footerItem2;
+		footerItem2.Construct(BACK);
+		footerItem2.SetText("BACK");
+		pFooter->AddItem(footerItem2);
+
+		pFooter->AddActionEventListener(*this);
+	}
 
 	return true;
 }
@@ -42,15 +60,7 @@ result Listview::OnInitializing(void) {
 	__bitmapPath.Add(new String("/Res/Icons/Splash_type3.png"));
 	__bitmapPath.Add(new String(L"/Res/Icons/Splash_type4.png"));
 
-
-	menu_ = new OptionMenu();
-	 menu_->Construct();
-	 menu_->SetShowState(false);
-	 menu_->AddItem(String("GO!"), ON_MENU_CALCULATE);
-	 menu_->AddActionEventListener(*this);
-	 this->AddControl(*menu_);
-	 this->SetOptionkeyActionId(ON_MENU);
-	 this->AddOptionkeyActionListener(*this);
+	__SelectedAttrations.Construct();
 
 	__pLabelLog = static_cast<Label *> (GetControl("IDC_LABEL1"));
 	__pLabelLog->SetText(L"Log");
@@ -83,21 +93,25 @@ result Listview::OnTerminating(void) {
 	return r;
 }
 
+void Listview::OnActionPerformed(const Osp::Ui::Control& source, int actionId) {
+	switch (actionId) {
+	case GO:
+		AppLog("GO!");
+		AppLog("%d",__SelectedAttrations.GetCount());
 
-void
-Listview::OnActionPerformed(const Osp::Ui::Control& source, int actionId)
-{
- switch(actionId)
- {
-    case ON_MENU:
-        menu_->SetShowState(!menu_->GetShowState());
-        menu_->Show();
-        break;
-    case ON_MENU_CALCULATE:
-    	AppLog("GO!");
-        // to be added later
-        break;
- }
+		break;
+
+	case BACK:
+		AppLog("BACK");
+		BukkaMain *pMain = new BukkaMain();
+		pMain->Initialize();
+		Frame *pFrame = Application::GetInstance()->GetAppFrame()->GetFrame();
+		pFrame->AddControl(*pMain);
+		pFrame->SetCurrentForm(*pMain);
+		pMain->Draw();
+		pMain->Show();
+		break;
+	}
 }
 
 Osp::Ui::Controls::ListItemBase* Listview::CreateItem(int index, int itemWidth) {
@@ -125,7 +139,8 @@ Osp::Ui::Controls::ListItemBase* Listview::CreateItem(int index, int itemWidth) 
 	item->AddElement(Rectangle(10, 20, 60, 60), ID_FORMAT_BITMAP, *bitmap,
 			null, null);
 	item->AddElement(Rectangle(80, 25, 400, 50), ID_FORMAT_STRING, *name, true);
-	item->SetElementSelectionEnabled(ID_FORMAT_BITMAP,true);
+	item->SetElementSelectionEnabled(ID_FORMAT_BITMAP, true);
+	item->SetElementSelectionEnabled(ID_FORMAT_STRING, true);
 	return item;
 }
 
@@ -154,6 +169,9 @@ void Listview::OnListViewItemLongPressed(Osp::Ui::Controls::ListView &listView,
 		break;
 	case ID_FORMAT_NULL:
 		itemText.Format(40, L"Item %d: Selected", index + 1);
+
+
+
 		break;
 	}
 
@@ -186,7 +204,16 @@ void Listview::OnListViewItemStateChanged(
 		msgbox.ShowAndWait(modalResult);
 		break;
 	case ID_FORMAT_NULL:
-		itemText.Format(40, L"Ite %d: Selected", index + 1);
+		itemText.Format(40, L"Item %d: Selected", index + 1);
+		String *itemname;
+		__name.GetAt(index , itemname);
+		if (__SelectedAttrations.Contains(itemname)){
+			__SelectedAttrations.Remove(itemname);
+		}
+		else{
+			__SelectedAttrations.Add(itemname);
+		}
+
 		break;
 	}
 	__pLabelLog->SetText(itemText);
@@ -198,16 +225,3 @@ void Listview::OnListViewItemStateChanged(
 void Listview::OnListViewItemSwept(Osp::Ui::Controls::ListView &listView,
 		int index, Osp::Ui::Controls::SweepDirection direction) {
 }
-//void
-//Listview::OnListViewContextItemStateChanged(Osp::Ui::Controls::ListView &listView, int index, int elementId, Osp::Ui::Controls::ListContextItemStatus state)
-//{
-//	String contextItem(L"");
-//	if (elementId == ID_CONTEXT_ITEM_1)
-//		contextItem.Format(40, L"ContextItem %d :\n(Test1) Selected", index+1);
-//	else
-//		contextItem.Format(40, L"ContextItem %d :\n(Test2) Selected", index+1);
-//
-//	__pLabelLog->SetText(contextItem);
-//	__pLabelLog->Draw();
-//	__pLabelLog->Show();
-//}
